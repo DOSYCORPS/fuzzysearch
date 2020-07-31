@@ -1,4 +1,4 @@
-# sored-fuzzysearch
+# scored-fuzzysearch
 
 > Tiny and blazing-fast fuzzy search in JavaScript.
 
