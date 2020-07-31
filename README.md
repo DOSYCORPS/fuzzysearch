@@ -20,8 +20,8 @@ Returns `number` (score value where a larger score represents a better match and
 
 ```js
 fuzzysearch("crtw", "cartwheel"); // 0.9989972540016198
-fuzzysearch("cwhee", "cartwheel"); // 0.9989965050034285
-fuzzysearch("cwe", "cartwheel"); // 0.9965030042394439
+fuzzysearch("cwhEE", "cartwheel"); // 0.9989965050034285
+fuzzysearch("CWe", "cartwheel"); // 0.9965030042394439
 fuzzysearch("eel", "cartwheel"); // 0.9865762723408131
 fuzzysearch("ee", "cartwheel"); // 0.9855906816591541
 fuzzysearch("eeel", "cartwheel"); // 0

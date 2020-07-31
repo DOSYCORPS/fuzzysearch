@@ -44,7 +44,7 @@ test("fuzzysearch should match expectations", function (t) {
 });
 
 // used to generate the README examples
-// ["cwhee", "eel", "cwe", "crtw", "ee", "eeel", "dog"]
+// ["cwhEE", "eel", "CWe", "crtw", "ee", "eeel", "dog"]
 //   .map(function (value) {
 //     return {
 //       value: value,
