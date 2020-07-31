@@ -1,17 +1,16 @@
 {
-  "name": "fuzzysearch",
+  "name": "scored-fuzzysearch",
   "description": "Tiny and blazing-fast fuzzy search in JavaScript",
-  "version": "1.0.3",
-  "homepage": "https://github.com/bevacqua/fuzzysearch",
+  "version": "1.0.0",
+  "homepage": "https://github.com/jhudson8/fuzzysearch",
   "author": {
-    "name": "Nicolas Bevacqua",
-    "email": "ng@bevacqua.io",
-    "url": "http://bevacqua.io"
+    "name": "Joe Hudson (forked from Nicolas Bevacqua)",
+    "email": "joehud@gmail.com"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/bevacqua/fuzzysearch.git"
+    "url": "git://github.com/jhudson8/fuzzysearch.git"
   },
   "scripts": {
     "test": "jshint . && tape test/*.js"

@@ -1,12 +1,10 @@
-# fuzzysearch
+# sored-fuzzysearch
 
-> Tiny and blazing-fast fuzzy search in JavaScript
+> Tiny and blazing-fast fuzzy search in JavaScript.
 
 Fuzzy searching allows for flexibly matching a string with partial input, useful for filtering data very quickly based on lightweight user input.
 
-# Demo
-
-To see `fuzzysearch` in action, head over to [bevacqua.github.io/horsey][3], which is a demo of an autocomplete component that uses `fuzzysearch` to filter out results based on user input.
+This was forked from https://github.com/bevacqua/fuzzysearch to add case insensitivity and scored results
 
 # Install
 
@@ -18,31 +16,21 @@ npm install --save fuzzysearch
 
 # `fuzzysearch(needle, haystack)`
 
-Returns `true` if `needle` matches `haystack` using a fuzzy-searching algorithm. Note that this program doesn't implement _[levenshtein distance][2]_, but rather a simplified version where **there's no approximation**. The method will return `true` only if each character in the `needle` can be found in the `haystack` and occurs after the preceding matches.
+Returns `number` (score value where a larger score represents a better match and `0` is no match) if `needle` matches `haystack` using a fuzzy-searching algorithm. Note that this program doesn't implement _[levenshtein distance][2]_, but rather a simplified version where **there's no approximation**. The method will return `true` only if each character in the `needle` can be found in the `haystack` and occurs after the preceding matches.
 
 ```js
-fuzzysearch('twl', 'cartwheel') // <- true
-fuzzysearch('cart', 'cartwheel') // <- true
-fuzzysearch('cw', 'cartwheel') // <- true
-fuzzysearch('ee', 'cartwheel') // <- true
-fuzzysearch('art', 'cartwheel') // <- true
-fuzzysearch('eeel', 'cartwheel') // <- false
-fuzzysearch('dog', 'cartwheel') // <- false
+fuzzysearch("crtw", "cartwheel"); // 0.9989972540016198
+fuzzysearch("cwhee", "cartwheel"); // 0.9989965050034285
+fuzzysearch("cwe", "cartwheel"); // 0.9965030042394439
+fuzzysearch("eel", "cartwheel"); // 0.9865762723408131
+fuzzysearch("ee", "cartwheel"); // 0.9855906816591541
+fuzzysearch("eeel", "cartwheel"); // 0
+fuzzysearch("dog", "cartwheel"); // 0
 ```
 
-An exciting application for this kind of algorithm is to filter options from an autocomplete menu, check out [horsey][3] for an example on how that might look like.
+Scoring is based on
 
-# But! _`RegExp`s...!_
-
-[![chart showing abysmal performance for regexp-based implementation][1]][4]
-
-<sub>The current implementation uses the algorithm suggested by Mr. Aleph, a crazy russian compiler engineer working at V8.</sub>
-
-# License
-
-MIT
-
-[1]: https://cloud.githubusercontent.com/assets/934293/6550014/d3a86174-c5fc-11e4-8334-b2e2b0d38fad.png
-[2]: http://en.wikipedia.org/wiki/Levenshtein_distance
-[3]: http://bevacqua.github.io/horsey
-[4]: http://jsperf.com/fuzzysearch-regex/14
+1. how many characters match
+1. how close the initial match character is to the beginning of the test string
+1. how many characters match without spacing
+1. how close multiple match segments are to eachother
