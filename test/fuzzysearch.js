@@ -1,7 +1,8 @@
 "use strict";
 
 var test = require("tape");
-var fuzzysearch = require("..");
+var fuzzysearch = require("..").fuzzysearch;
+var findMatchIndices = require("..").findMatchIndices;
 
 test("fuzzysearch should match expectations", function (t) {
   t.equal(!!fuzzysearch("CAR", "cartwheel"), true);
@@ -35,10 +36,7 @@ test("fuzzysearch should match expectations", function (t) {
     .map(function (data) {
       return data.value;
     });
-  t.equal(
-    JSON.stringify(searchResults),
-    JSON.stringify(["cwheel", "car", "cwe"])
-  );
+  t.deepEqual(searchResults, ["cwheel", "car", "cwe"]);
 
   t.end();
 });

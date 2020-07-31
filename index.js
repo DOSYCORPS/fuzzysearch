@@ -56,4 +56,40 @@ function fuzzysearch(needle, haystack) {
   return score;
 }
 
-module.exports = fuzzysearch;
+function findMatchIndices(needle, haystack) {
+  var hlen = haystack.length;
+  var nlen = needle.length;
+  if (nlen > hlen) {
+    return 0;
+  }
+  if (nlen === hlen) {
+    return [{ start: 0, length: haystack.length }];
+  }
+
+  var indices = [];
+  var currrentMatch;
+  outer: for (var i = 0, j = 0; i < nlen; i++) {
+    var nch = needle.charCodeAt(i);
+    var opposite = opposites[nch];
+    var testChar;
+    while (j < hlen) {
+      testChar = haystack.charCodeAt(j++);
+      if (testChar === nch || testChar === opposite) {
+        if (!currrentMatch) {
+          currrentMatch = { start: j - 1, length: 1 };
+          indices.push(currrentMatch);
+        } else {
+          currrentMatch.length = currrentMatch.length + 1;
+        }
+        continue outer;
+      } else {
+        currrentMatch = undefined;
+      }
+    }
+    return 0;
+  }
+  return indices;
+}
+
+module.exports.fuzzysearch = fuzzysearch;
+module.exports.findMatchIndices = findMatchIndices;
