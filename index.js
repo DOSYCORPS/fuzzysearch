@@ -2,7 +2,7 @@
 
 var INITIAL_SCORE_DECRESE_PER_LETTER = 1 - 0.0005;
 var DECREASE_BEFORE_MATCH = 1 - 0.002;
-var MATCH_INCREASE = 1 + 0.001;
+var MATCH_INCREASE = 1 + 0.0012;
 var DECREASE_AFTER_MATCH = 1 - 0.0005;
 function initialScore(word) {
   return Math.pow(INITIAL_SCORE_DECRESE_PER_LETTER, word.length);

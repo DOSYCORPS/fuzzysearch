@@ -44,18 +44,18 @@ test("fuzzysearch should match expectations", function (t) {
 });
 
 // used to generate the README examples
-// ["cwhEE", "eel", "CWe", "crtw", "ee", "eeel", "dog"]
-//   .map(function (value) {
-//     return {
-//       value: value,
-//       score: fuzzysearch(value, "cartwheel"),
-//     };
-//   })
-//   .sort(function (a, b) {
-//     return a.score > b.score ? -1 : 1;
-//   })
-//   .forEach(function (data) {
-//     var value = data.value;
-//     var score = data.score;
-//     console.log("fuzzysearch(" + "'" + value + "', 'cartwheel') // " + score);
-//   });
+["cwhEE", "eel", "CWe", "crtw", "ee", "eeel", "dog"]
+  .map(function (value) {
+    return {
+      value: value,
+      score: fuzzysearch(value, "cartwheel"),
+    };
+  })
+  .sort(function (a, b) {
+    return a.score > b.score ? -1 : 1;
+  })
+  .forEach(function (data) {
+    var value = data.value;
+    var score = data.score;
+    console.log("fuzzysearch(" + "'" + value + "', 'cartwheel') // " + score);
+  });
