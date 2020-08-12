@@ -1,8 +1,8 @@
 "use strict";
 
 var test = require("tape");
-var fuzzysearch = require("..").fuzzysearch;
-var findMatchIndices = require("..").findMatchIndices;
+var fuzzysearch = require("../dist/src/index").fuzzysearch;
+var findMatchIndices = require("../dist/src/index").findMatchIndices;
 
 test("fuzzysearch should match expectations", function (t) {
   t.equal(!!fuzzysearch("CAR", "cartwheel"), true);

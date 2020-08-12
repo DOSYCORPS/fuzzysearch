@@ -16,5 +16,6 @@
   "expr": true,
   "latedef": "nofunc",
   "indent": 2,
-  "node": true
+  "node": true,
+  "laxbreak": false
 }
