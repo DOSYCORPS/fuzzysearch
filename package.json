@@ -1,23 +1,30 @@
 {
-  "name": "fuzzysearch",
+  "name": "scored-fuzzysearch",
+  "main": "dist/src/index.js",
+  "typings": "dist/src/index.d.ts",
   "description": "Tiny and blazing-fast fuzzy search in JavaScript",
-  "version": "1.0.3",
-  "homepage": "https://github.com/bevacqua/fuzzysearch",
+  "version": "1.0.5",
+  "homepage": "https://github.com/jhudson8/fuzzysearch",
   "author": {
-    "name": "Nicolas Bevacqua",
-    "email": "ng@bevacqua.io",
-    "url": "http://bevacqua.io"
+    "name": "Joe Hudson (forked from Nicolas Bevacqua)",
+    "email": "joehud@gmail.com"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/bevacqua/fuzzysearch.git"
+    "url": "git://github.com/jhudson8/fuzzysearch.git"
   },
   "scripts": {
-    "test": "jshint . && tape test/*.js"
+    "build": "rm -rf ./dist && tsc --rootDir ./",
+    "test": "npm run build && tape test/*.js",
+    "prepublishOnly": "npm run test"
   },
   "devDependencies": {
     "jshint": "^2.6.0",
-    "tape": "^3.5.0"
+    "tape": "^3.5.0",
+    "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "glob": "^7.1.6"
   }
 }

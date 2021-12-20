@@ -15,7 +15,7 @@
   "immed": true,
   "expr": true,
   "latedef": "nofunc",
-  "quotmark": "single",
   "indent": 2,
-  "node": true
+  "node": true,
+  "laxbreak": false
 }
